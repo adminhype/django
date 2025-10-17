@@ -1,0 +1,12 @@
+body{
+    background: yellow;
+
+}
+h1{
+    color: rgb(0, 102, 255);
+    font-size: 11rem;
+}
+h2{
+    color: blue;
+    margin: 0;
+}
