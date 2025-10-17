@@ -10,9 +10,20 @@ from .dummy_data import gadgets
 # Create your views here.
 # wearabletracker-x10
 
+from django.views.generic.base import RedirectView
+
 
 def start_page_view(request):
     return HttpResponse("me: Welcome too Views")
+
+
+class RedirectToGadgetView(RedirectView):
+    pattern_name = "gadget_slug_url"
+
+    def get_redirect_url(self, *args, **kwargs):
+        slug = slugify(gadgets[kwargs.get("gadget_id", 0)]["name"])
+        new_kwargs = {"gadget_slug": slug}
+        return super().get_redirect_url(*args, **new_kwargs)
 
 
 def single_gadget_int_view(request, gadget_id):
